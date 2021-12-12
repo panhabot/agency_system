@@ -23,13 +23,13 @@ import moment from 'moment'
 
 export default function Table({ datas, columns,handleDelete }) {
 	const{t} =useTranslation()
-	const [dateState, setDateState] = useState([
-		{
-			startDate: new Date(),
-			endDate: new Date(),
-			key:'selection'
-		}
-	])
+	// const [dateState, setDateState] = useState([
+	// 	{
+	// 		startDate: new Date(),
+	// 		endDate: new Date(),
+	// 		key:'selection'
+	// 	}
+	// ])
 	const [startDate, setStartDate]  = useState()
 	const [endDate, setendDate] = useState()
 	const data = datas
@@ -73,11 +73,11 @@ export default function Table({ datas, columns,handleDelete }) {
 		setGlobalFilter(value || undefined)
 	}, 200)
 
-	const selectionRange = {
-		startDate: new Date(),
-		endDate: new Date(),
-		key: 'selection'
-	}
+	// const selectionRange = {
+	// 	startDate: new Date(),
+	// 	endDate: new Date(),
+	// 	key: 'selection'
+	// }
 	var [dateRange, setDateRange] = useState([])
 	const [isRange,setIsRange] =useState(false)
 	function getDates(startDate, stopDates) {
