@@ -1,5 +1,9 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../hooks/useAuth'
+import { createPopper } from '@popperjs/core'
+import { changeLanguage } from '../../hooks/useTranslation'
+import googleTranslate from '@iconify-icons/mdi/google-translate'
 
 import { InlineIcon } from '@iconify/react'
 import viewDashboardOutline from '@iconify-icons/mdi/view-dashboard-outline'
@@ -16,9 +20,23 @@ import Logo from '@images/logo-text.png'
 
 export default function Sidebar() {
 	const [collapseShow, setCollapseShow] = React.useState('hidden')
-	const { t } = useTranslation()
 
 	const user = JSON.parse(localStorage.getItem('user'))
+	const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false)
+	const btnDropdownRef = React.createRef()
+	const popoverDropdownRef = React.createRef()
+	const { t } = useTranslation()
+	const { currentUser,logout } = useContext(AuthContext)
+
+	const openDropdownPopover = () => {
+		createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
+			placement: 'bottom-start'
+		})
+		setDropdownPopoverShow(true)
+	}
+	const closeDropdownPopover = () => {
+		setDropdownPopoverShow(false)
+	}
 	
 	return (
 		<>
@@ -37,8 +55,40 @@ export default function Sidebar() {
 					>
 						<img src={Logo} className=" h-10 w-30" />
 					</Link>
+					
 					<ul className="md:hidden items-center flex flex-wrap list-none">
-                        
+					<li className="opacity-70 hover:opacity-100 hover:text-blue-700 mx-5 inline-block"
+							ref={btnDropdownRef}
+							onClick={() => {
+								dropdownPopoverShow
+									? closeDropdownPopover()
+									: openDropdownPopover()
+							}}
+						>
+							<InlineIcon icon={googleTranslate} className="text-3xl" />
+							
+														<div
+								ref={popoverDropdownRef}
+								className={
+									(dropdownPopoverShow ? 'block ' : 'hidden ') +
+                                    'bg-white w-full sm:w-6/12 md:w-2/12 text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1'
+								}
+							>
+								<button
+									onClick={() => changeLanguage('en')}
+									className='text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent hover:underline'
+								>
+                                    English
+								</button>
+								<button
+									onClick={() => changeLanguage('kh')}
+									className='text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent hover:underline'
+								>
+                                    ខ្មែរ
+								</button>
+							</div>
+						</li>
+						
 						<li className="inline-block relative">
 							<UserDropdown />
 						</li>

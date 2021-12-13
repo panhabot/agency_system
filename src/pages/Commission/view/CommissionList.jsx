@@ -72,7 +72,7 @@ function AgentList() {
 				<h1 className="flex-1 font-bold text-3xl text-yellow-lite">{t('COMMISION')}</h1>
 				{
 					user.roleId == 2 ? null :(
-						<Link to={`${url}/new_commision`} className="border-2 p-2 text-white opacity-80 hover:opacity-100 rounded items-center">
+						<Link to={`${url}/new_commision`} className="border-2 p-2 sm:p-0 sm:text-xs sm:py-2 sm:px-1 text-white opacity-80 hover:opacity-100 rounded items-center">
 							<div>
 								{t('NEW_COMMISSION')}
 							</div>
