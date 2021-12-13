@@ -24,15 +24,16 @@ export default function ModalChangePassword(data) {
          setError(true)  
          return
        }
-      //  console.log(password === comfirPassword)
+      // lastest version of frontend
        if(password != comfirPassword) {
         console.log(2)
         setShowErrorText('Password and Comfirm Password are not matching !')
         setError(true)
         return
        }
+       setShowModal(false)
        data.setNewPassword(password)
-       setError(true)
+
 	}
   const AlertMessage = () => {
 		return(
