@@ -114,13 +114,13 @@ export default function Table({ datas, columns,handleDelete }) {
 				onChange(e.target.value)}}></input> */}
 				
 			</div>
-			<div className='sm:flex sm:flex-col'>
+			<div className='sm:flex sm:flex-col flex flex-row'>
 			<h1 className="inline-block sm:block sm:mx-0 ">From:</h1>
 
 <input type="date" className='border border-gray-400 rounded-md mx-2 px-3' onChange={e => {setStartDate(e.target.value) 
 console.log(startDate)
 }}></input>
-<h1 className="inline-block sm:block sm:mx-0 mx-10">To:</h1>
+<h1 className="inline-block sm:block sm:mx-0 mx-10 ">To:</h1>
 
 <input type="date" className='border border-gray-400 rounded-md px-3' onChange={e => {setendDate(e.target.value) 
 console.log(endDate)

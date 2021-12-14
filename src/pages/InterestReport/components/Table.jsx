@@ -104,21 +104,17 @@ export default function Table({ data, columns }) {
 			</div>
 			</div>
 			<div className='sm:flex sm:flex-col flex flex-row'>
-				<div className='sm:flex-1'>
 <h1 className="inline-block sm:mx-0 sm:block mx-10">From:</h1>
 
 <input type="date" className='border border-gray-400 rounded-md px-3' onChange={e => {setStartDate(e.target.value) 
 console.log(startDate)
 }}></input>
-</div>
-<div className='sm:flex-1'>
 <h1 className="inline-block sm:block sm:mx-0 mx-10">To:</h1>
 
 <input type="date" className='border border-gray-400 rounded-md px-3' onChange={e => {setendDate(e.target.value) 
 console.log(endDate)
 }}></input>
-</div>
-<button onClick={() => getDates(startDate,endDate)} className=" border border-gray-400 sm:my-1 px-2 mx-5 rounded-md">Search</button>
+<button onClick={() => getDates(startDate,endDate)} className=" border border-gray-400 sm:my-1 px-2  mx-5 rounded-md">Search</button>
 </div>
 			<div className="flex flex-col mt-2 "  ref={(el) => (componentRef = el)}>
 				<div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
