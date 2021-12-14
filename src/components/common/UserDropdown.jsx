@@ -32,7 +32,7 @@ const UserDropdown = () => {
 						<img
 							alt="..."
 							className="w-full rounded-full align-middle border-none shadow-lg"
-							src="https://penitrip.com/assets/img/profile_pic.jpg"
+							src="https://thumbs.dreamstime.com/z/default-avatar-profile-icon-grey-photo-placeholder-male-default-profile-gray-person-picture-isolated-white-background-good-man-102846161.jpg"
 						/>
 					</span>
 				</div>

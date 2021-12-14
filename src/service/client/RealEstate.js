@@ -1,5 +1,5 @@
 import axios from 'axios'
-const BASE_URL = ' http://18.117.186.113'
+const BASE_URL = 'http://52.77.238.215'
 export const getRealEstateById = (id) => {
     const token = localStorage.getItem('token')
 	const config =  {

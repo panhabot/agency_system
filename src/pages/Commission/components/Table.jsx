@@ -23,13 +23,13 @@ import moment from 'moment'
 
 export default function Table({ datas, columns,handleDelete }) {
 	const{t} =useTranslation()
-	const [dateState, setDateState] = useState([
-		{
-			startDate: new Date(),
-			endDate: new Date(),
-			key:'selection'
-		}
-	])
+	// const [dateState, setDateState] = useState([
+	// 	{
+	// 		startDate: new Date(),
+	// 		endDate: new Date(),
+	// 		key:'selection'
+	// 	}
+	// ])
 	const [startDate, setStartDate]  = useState()
 	const [endDate, setendDate] = useState()
 	const data = datas
@@ -73,11 +73,11 @@ export default function Table({ datas, columns,handleDelete }) {
 		setGlobalFilter(value || undefined)
 	}, 200)
 
-	const selectionRange = {
-		startDate: new Date(),
-		endDate: new Date(),
-		key: 'selection'
-	}
+	// const selectionRange = {
+	// 	startDate: new Date(),
+	// 	endDate: new Date(),
+	// 	key: 'selection'
+	// }
 	var [dateRange, setDateRange] = useState([])
 	const [isRange,setIsRange] =useState(false)
 	function getDates(startDate, stopDates) {
@@ -112,21 +112,22 @@ export default function Table({ datas, columns,handleDelete }) {
 				{/* <h1 className="inline-block mx-10">Date:</h1>
 				<input type="date" onChange={e => {setValue(e.target.value) 
 				onChange(e.target.value)}}></input> */}
-				<h1 className="inline-block mx-10">From:</h1>
-
-				<input type="date" onChange={e => {setStartDate(e.target.value) 
-				console.log(startDate)
-				}}></input>
-				<h1 className="inline-block mx-10">To:</h1>
-
-				<input type="date" onChange={e => {setendDate(e.target.value) 
-				console.log(endDate)
-				}}></input>
-
-				<button onClick={() => getDates(startDate,endDate)}>Search</button>
 				
 			</div>
-			
+			<div className='sm:flex sm:flex-col flex flex-row'>
+			<h1 className="inline-block sm:block sm:mx-0 ">From:</h1>
+
+<input type="date" className='border border-gray-400 rounded-md mx-2 px-3' onChange={e => {setStartDate(e.target.value) 
+console.log(startDate)
+}}></input>
+<h1 className="inline-block sm:block sm:mx-0 mx-10 ">To:</h1>
+
+<input type="date" className='border border-gray-400 rounded-md px-3' onChange={e => {setendDate(e.target.value) 
+console.log(endDate)
+}}></input>
+
+<button onClick={() => getDates(startDate,endDate)} className='border border-gray-400 rounded-md mt-1 mx-5 px-5'>Search</button>
+			</div>
 			<div className="flex flex-col mt-5 bg-white">
 				<div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
 					<div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">

@@ -21,6 +21,12 @@ module.exports = {
 				},
 				white: '#FFFBFB',
 			},
+			screens: {
+
+				'sm': {'max': '639px'},
+				// => @media (max-width: 639px) { ... }
+			  }
+
 		},
 		fontFamily: {
 			kantumruy: ['Kantumruy', 'sans-serif'],

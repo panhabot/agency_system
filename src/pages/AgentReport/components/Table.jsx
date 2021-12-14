@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link, useRouteMatch } from 'react-router-dom'
 import { useSortBy, useAsyncDebounce, usePagination, useTable, useFilters, useGlobalFilter } from 'react-table'
 import PropTypes from 'prop-types'
@@ -13,6 +13,7 @@ import arrowUpDropCircleOutline from '@iconify-icons/mdi/arrow-up-drop-circle-ou
 import printerOutline from '@iconify-icons/mdi/printer-outline'
 import ReactToPrint from 'react-to-print'
 import { useTranslation } from 'react-i18next'
+import moment from 'moment'
 
 
 
@@ -20,7 +21,8 @@ import { useTranslation } from 'react-i18next'
 export default function Table({ data, columns }) {
 	const {t} = useTranslation()
 	let componentRef = React.createRef()
-	
+	const [startDate, setStartDate]  = useState()
+	const [endDate, setendDate] = useState()
 	const {
 		getTableProps,
 		getTableBodyProps,
@@ -55,7 +57,21 @@ export default function Table({ data, columns }) {
 	const onChange = useAsyncDebounce(value => {
 		setGlobalFilter(value || undefined)
 	}, 200)
-
+	var [dateRange, setDateRange] = useState([])
+	const [isRange,setIsRange] =useState(false)
+	function getDates(startDate, stopDates) {
+		var dateArray = []
+		var currentDate = moment(startDate)
+		var stopDate = moment(stopDates)
+		while (currentDate <= stopDate) {
+			dateArray.push( moment(currentDate).format('YYYY-MM-DD') )
+			currentDate = moment(currentDate).add(1, 'days')
+		}
+		setDateRange(dateRange = dateArray)
+		setIsRange(true)
+		console.log(dateRange)
+		return dateArray
+	}
 	return (
 		<>
 		<div className="flex flex-row justify-between">
